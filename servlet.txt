@@ -1,0 +1,40 @@
+ <servlet>
+    <description></description>
+    <display-name>Controller</display-name>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/Controller</url-pattern>
+  </servlet-mapping>
+
+
+
+<servlet>
+    <description></description>
+    <display-name>Controller</display-name>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/Controller</url-pattern>
+  </servlet-mapping>
+____________________________________________________________________
+Daqui para baixo funciona como mapeamento do servlet do projecto agenda
+<servlet>
+    <description></description>
+    <display-name>Controller2</display-name>
+    <servlet-name>Controller2</servlet-name>
+    <servlet-class>controller.Controller2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller2</servlet-name>
+    <url-pattern>/Controller2</url-pattern>
+    <url-pattern>/main</url-pattern>
+    <url-pattern>/insert</url-pattern>
+  </servlet-mapping>
+-------------------------ou---------------------------------
+
+@WebServlet(name = "Controller2", urlPatterns= {"/Controller2", "/main", "/insert"})
