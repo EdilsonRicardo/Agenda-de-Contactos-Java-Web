@@ -1,11 +1,14 @@
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import model.DAO;
 import model.JavaBeans;
 
@@ -44,20 +47,44 @@ public class Controller2 extends HttpServlet {
 	protected void contactos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Redireccionar requisicao para o documento agenda.jsp
-		response.sendRedirect("agenda.jsp");
+		//response.sendRedirect("agenda.jsp");
+		//Criacao de objecto que recebra dados da classe JavaBeans por um array
+		ArrayList<JavaBeans> lista = dao.listarContactos();
+		//Encaminhar a lista ao documento agenda.jsp
+		request.setAttribute("contactos", lista); //setar atributo do documento jsp com a lista
+		//Despachar a lista ao documento jsp
+		RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
+		rd.forward(request, response);
+		
+		
+		
+		
+		/*
+		 * //teste de recebimento da lista
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getIdcon());
+			System.out.println(lista.get(i).getNome());
+			System.out.println(lista.get(i).getTelefone());
+			System.out.println(lista.get(i).getEmail());
+		}*/
 	}
 	
 	protected void novoContacto(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 
+		/* 
 		System.out.println(request.getParameter("nome"));
 		System.out.println(request.getParameter("telefone"));
-		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("email"));*/
 		
 		//Setar variaveis javabeans
 		contacto.setNome(request.getParameter("nome"));
-		contacto.setNome(request.getParameter("telefone"));
-		contacto.setNome(request.getParameter("email"));
+		contacto.setTelefone(request.getParameter("telefone"));
+		contacto.setEmail(request.getParameter("email"));
+		
+		// Invocar o metodo inserirContacto passando o objecto contacto
+		dao.inserirContacto(contacto);
+		//Redireccionar para o documento agenda.jsp
+		response.sendRedirect("main");
 	}
 
 }
