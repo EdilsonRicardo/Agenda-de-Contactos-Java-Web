@@ -4,12 +4,12 @@
 <%@ page import="java.util.ArrayList"%>
 <%
 	ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contactos");
-	for(int i = 0; i < lista.size(); i++){
+	/*for(int i = 0; i < lista.size(); i++){
 		out.println(lista.get(i).getIdcon());
 		out.println(lista.get(i).getNome());
 		out.println(lista.get(i).getTelefone());
 		out.println(lista.get(i).getEmail());
-	}
+	}*/
 %>
 <!DOCTYPE html>
 <html lang="pt">
@@ -29,7 +29,7 @@
 			<th>Nome</th>
 			<th>Telefone</th>
 			<th>E-mail</th>
-			
+			<th>Opções</th>
 			</tr>
 		</thead>
 		
@@ -40,7 +40,7 @@
 					<td><%=lista.get(i).getNome()%></td>
 					<td><%=lista.get(i).getEmail()%></td>
 					<td><%=lista.get(i).getTelefone()%></td>
-					
+					<td><a href="select?idcon=<%=lista.get(i).getIdcon()%>" class="Botao1">Editar</a></td>
 				</tr>
 			
 			<%} %>

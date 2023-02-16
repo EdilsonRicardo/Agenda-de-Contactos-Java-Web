@@ -43,6 +43,7 @@ h1{
 	margin-top: 30px;
 	border-collapse: collapse; /*Esta linha remove espaco entre as celulas da tabela*/
 }
+
 /*Estilo para o cabeçalho da tabela*/
 #tabela th{
 	border: 1px solid #ddd;
@@ -50,9 +51,17 @@ h1{
 	text-align: left;
 	background-color: #66bbff;
 }
+
 /* Estilo para o corpo da tabela*/
 #tabela td{
 	border: 1px solid #ddd;
 	padding: 10px;
+	font-weight: 100;
+}
+
+#caixa3{
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #ff0000;
 }
 
